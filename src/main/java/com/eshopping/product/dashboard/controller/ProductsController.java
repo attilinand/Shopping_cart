@@ -68,8 +68,8 @@ public class ProductsController {
 
 		Optional<Product> originalProductOptional = productRepository.findById(product_id);
 		Product originalProduct = originalProductOptional.get();
-		originalProduct.setRetailPrice(product.getRetailPrice());
-		originalProduct.setDiscountedPrice(product.getDiscountedPrice());
+		originalProduct.setRetail_price(product.getRetail_price());
+		originalProduct.setDiscounted_price(product.getDiscounted_price());
 		originalProduct.setAvailability(product.getAvailability());
 		productRepository.save(originalProduct);
 		return new ResponseEntity<>(HttpStatus.OK);
@@ -108,7 +108,7 @@ public class ProductsController {
 		if (products == null || products.isEmpty()) {
 			return new ResponseEntity<>(products, HttpStatus.OK);
 		}
-		Collections.sort(products, new AvailabilityComparator().thenComparingDouble(Product::getDiscountedPrice)
+		Collections.sort(products, new AvailabilityComparator().thenComparingDouble(Product::getDiscounted_price)
 				.thenComparingLong(Product::getId));
 
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
@@ -133,7 +133,7 @@ public class ProductsController {
 			return new ResponseEntity<>(products, HttpStatus.OK);
 		}
 
-		Collections.sort(products, new DiscountPercentageComparator().thenComparingDouble(Product::getDiscountedPrice)
+		Collections.sort(products, new DiscountPercentageComparator().thenComparingDouble(Product::getDiscounted_price)
 				.thenComparingLong(Product::getId));
 
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
