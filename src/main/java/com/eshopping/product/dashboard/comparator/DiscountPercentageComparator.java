@@ -17,8 +17,8 @@ public class DiscountPercentageComparator implements Comparator<Product>{
 	*/
 	@Override
 	   public int compare(Product product1, Product product2) {
-	       double discountPercentageForProduct1 = (product1.getRetailPrice() - product1.getDiscountedPrice())/product1.getRetailPrice() * 100;
-	       double discountPercentageForProduct2 = (product2.getRetailPrice() - product2.getDiscountedPrice())/product2.getRetailPrice() * 100;
+	       double discountPercentageForProduct1 = (product1.getRetail_price() - product1.getDiscounted_price())/product1.getRetail_price() * 100;
+	       double discountPercentageForProduct2 = (product2.getRetail_price() - product2.getDiscounted_price())/product2.getRetail_price() * 100;
 	       int flag=(int) (Math.round(discountPercentageForProduct2)-Math.round(discountPercentageForProduct1));
 	       return flag;
 	   }
